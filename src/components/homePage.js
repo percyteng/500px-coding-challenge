@@ -27,19 +27,21 @@ export default class HomePage extends Component{
   renderImages(){
     return(
       this.state.imageList.map((image, i)=>(
-          <div key={i} className = 'images'
+          <div key={i} className='animated zoomIn'
             style = {{
               width: '32%',
               height:window.innerWidth*0.3*0.8,
               marginTop:window.innerWidth*.005,
               marginLeft: '1%',
+              borderRadius: '2%',
               backgroundImage: 'url('+image.image_url+')',
-              backgroundSize: 'contain',
+              backgroundSize: 'cover',
               backgroundColor:'#000',
               backgroundRepeat: 'no-repeat',
               backgroundPosition: 'center',
               display:'inline-block',
             }}>
+
           </div>
         )
       )
@@ -54,24 +56,34 @@ export default class HomePage extends Component{
         textAlign: 'center',
       },
       contentDiv:{
-        width:'100%',
-        height: '500px',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        width:'80%',
         backgroundColor: '#f9f9f9',
+        height: '500px',
       },
       titleDiv:{
         marginTop: "20px",
         marginBottom: '1px',
         boxShadow: '0px 1px 1px #e8e8e8',
         paddingBottom:'5px',
+      },
+      wrapper:{
+        backgroundColor: '#f9f9f9',
+        width: '100%',
       }
     }
     return(
       <div>
         <div style={Styles.titleDiv}>
-          <h1 className='animated slideInUp' style = {Styles.titleStyle}> 500px Coding Challenge</h1>
+          <h1 className='animated slideInDown' style = {Styles.titleStyle}> 500px Coding Challenge</h1>
         </div>
-        <div style={Styles.contentDiv}>
-          {this.renderImages()}
+        <div style = {Styles.wrapper}>
+          <div style={Styles.contentDiv}>
+            <div style = {{height:'2%',width:'100%'}}>
+            </div>
+            {this.renderImages()}
+          </div>
         </div>
       </div>
     );
