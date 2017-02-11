@@ -1,5 +1,10 @@
 # 500px Coding Challenge
 
+It is a fun challenge and I really enjoyed it!
+
+Note:
+This repository has two contributors and they are both my accounts. I think I accidently made a commit in my other github account, sorry about that!
+
 You can access this web app at http://percyteng.me:7000
 Name: Percy Teng
 Github: https://github.com/percyteng
