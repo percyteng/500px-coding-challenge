@@ -1,6 +1,9 @@
 .images:hover{
   background-color: #000;
 }
-.images{
-  width:30%;
+p{
+  margin:0;
+}
+.userPic{
+  border-radius: 50%;
 }
