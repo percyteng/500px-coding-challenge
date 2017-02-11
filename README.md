@@ -16,7 +16,7 @@ There are a lot of existing react libraries that would make this app incredibly 
 # Design Mindset:
 The core UI design style is simplicity, especially for photo apps like this, users would apparently like to focus more on the beautiful photo contents instead of my UI. (Inspired by beautiful 500px UI)
 
-However, I did try to add some animation to make it more fun and smooth.
+However, I did try to add some animation and render delay to make it more fun and smooth.
 The main component is called homePage.js under <b>components</b> directory.
 
 # Fetching API
@@ -32,3 +32,6 @@ Hovering over images will provide the neccessary details of the image to users. 
 
 # Styling.
 In-line styling in React.js is very useful due to the benefits of JSX. I was able to dynamically change the components style with ease. However, <b>I still wrote a seperate css file for specific html component styling such as img tag.</b>
+
+# Infinite scroll.
+Between pagination and infinite scroll, I decided to go with infinite scroll just because it looks more modern and it is more effortless for users to use the app. Very easy to implement, just push the next page into the array of currently displayed images and it looks awesome.
