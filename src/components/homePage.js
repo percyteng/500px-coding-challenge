@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from "react-router";
+var currentPage = 1;
 export default class HomePage extends Component{
   constructor(){
     super()
@@ -7,7 +8,32 @@ export default class HomePage extends Component{
       imageList: [],
       selectedImage:{},
       display:[],
+      showImages: false,
     }
+  }
+  componentDidMount(){
+    var _this = this
+    setTimeout(()=>this.setState({showImages: true}),600)
+    window.onscroll = function(ev) {
+    if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
+        _500px.api('/photos', { feature: 'popular', image_size: 5, page: currentPage }, function (response) {
+          if (!response.success) {
+              alert('Unable to fetch images');
+          }
+          else{
+            var newList = _this.state.imageList.slice()
+            newList.push.apply(newList, response.data.photos)
+            console.log(newList.length)
+            _this.setState({imageList:newList}, ()=>{
+              var tmp = new Array(_this.state.imageList.length)
+              tmp.fill(0)
+              _this.setState({display:tmp})
+            })
+
+          }
+        })
+      }
+    };
   }
   componentWillMount(){
     var _this = this
@@ -15,11 +41,12 @@ export default class HomePage extends Component{
     _500px.init({
       sdk_key: '5eec9aac38ad6a4660f3b8f30edac08e110c7405'
     });
-    _500px.api('/photos', { feature: 'popular', image_size: 5, page: 1 }, function (response) {
+    _500px.api('/photos', { feature: 'popular', image_size: 5, page: currentPage }, function (response) {
       if (!response.success) {
           alert('Unable to fetch images');
       }
       else{
+        currentPage += 1
         console.log(response.data.photos)
         _this.setState({imageList:response.data.photos}, ()=>{
           var tmp = new Array(_this.state.imageList.length)
@@ -43,37 +70,38 @@ export default class HomePage extends Component{
     this.setState({display: tmp})
   }
   renderImages(){
-    return(
-      this.state.imageList.map((image, i)=>(
-          <div onMouseLeave= {this.onMouseLeave.bind(this)} onMouseOver= {this.onMouseOver.bind(this,i)} key={i} className='animated zoomIn'
-            style = {{
-              width:'32%',
-              position:'relative',
-              height:window.innerWidth*0.3*0.8,
-              marginTop:window.innerWidth*.005,
-              marginLeft: '1%',
-              borderRadius: '2%',
-              backgroundImage: 'url('+image.image_url+')',
-              backgroundSize: 'cover',
-              backgroundColor:'#000',
-              backgroundRepeat: 'no-repeat',
-              backgroundPosition: 'center',
-              display:'inline-block',
-            }}>
-            <div style={{
-              paddingLeft: '5px',
-              height: '20%',
-              position:'relative',
-              backgroundColor: '#000',
-              opacity: this.state.display[i],
-            }}>
-              <p style={{color: '#fff', marginLeft: '10px', paddingTop:'10px',fontFamily: 'Avenir', fontSize: 13}}>{image.name}</p>
-              <p style={{color: '#fff', position:'absolute', bottom:10, right: 10, fontFamily: 'Avenir', fontSize: 13}}>- {image.user.fullname}</p>
+    if (this.state.showImages){
+      return(
+        this.state.imageList.map((image, i)=>(
+            <div onMouseLeave= {this.onMouseLeave.bind(this)} onMouseOver= {this.onMouseOver.bind(this,i)} key={i} className='animated zoomIn'
+              style = {{
+                width:'32%',
+                position:'relative',
+                height:window.innerWidth*0.3*0.8,
+                marginTop:window.innerWidth*.005,
+                marginLeft: '.7%',
+                borderRadius: '2%',
+                backgroundImage: 'url('+image.image_url+')',
+                backgroundSize: 'cover',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center',
+                display:'inline-block',
+              }}>
+                <div style={{
+                  paddingLeft: '5px',
+                  height: '20%',
+                  backgroundColor:'rgba(0, 0, 0, .5)',
+                  position:'relative',
+                  opacity: this.state.display[i]
+                }}>
+                <p style={{color: '#fff', marginLeft: '10px', paddingTop:'10px',fontFamily: 'Avenir', fontSize: 13}}>{image.name}</p>
+                <p style={{color: '#fff', position:'absolute', bottom:10, right: 10, fontFamily: 'Avenir', fontSize: 13}}>- {image.user.fullname}</p>
+              </div>
             </div>
-          </div>
+          )
         )
       )
-    )
+    }
   }
   render(){
     const Styles = {

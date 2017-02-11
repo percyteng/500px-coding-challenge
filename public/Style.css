@@ -7,3 +7,6 @@ p{
 .userPic{
   border-radius: 50%;
 }
+.hoverCaption{
+  background-color: rgba(0,0,0,0.5);
+}
