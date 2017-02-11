@@ -15,7 +15,7 @@ export default class HomePage extends Component{
     _500px.init({
       sdk_key: '5eec9aac38ad6a4660f3b8f30edac08e110c7405'
     });
-    _500px.api('/photos', { feature: 'popular', image_size: 5, page: 2 }, function (response) {
+    _500px.api('/photos', { feature: 'popular', image_size: 5, page: 1 }, function (response) {
       if (!response.success) {
           alert('Unable to fetch images');
       }
@@ -45,7 +45,7 @@ export default class HomePage extends Component{
   renderImages(){
     return(
       this.state.imageList.map((image, i)=>(
-          <div onMouseLeave= {this.onMouseLeave.bind(this)} onMouseOver= {this.onMouseOver.bind(this,i)} key={i} className='animated zoomIn images'
+          <div onMouseLeave= {this.onMouseLeave.bind(this)} onMouseOver= {this.onMouseOver.bind(this,i)} key={i} className='animated zoomIn'
             style = {{
               width:'32%',
               position:'relative',
@@ -81,7 +81,7 @@ export default class HomePage extends Component{
         fontFamily: "Avenir",
         fontSize: '30px',
         fontWeight: 300,
-        textAlign: 'center',
+        marginLeft: 20,
       },
       contentDiv:{
         marginLeft: 'auto',

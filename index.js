@@ -10,9 +10,9 @@ var app = express();
 app.use(express.static(__dirname + '/public'))
 app.use(webpackDevMiddleware(webpack(webpackConfig)))
 
-app.set('port', process.env.PORT || 4000);
+app.set('port', process.env.PORT || 7000);
 app.set('host', process.env.HOST || 'localhost');
 
 app.listen(app.get('port'), function(){
-  console.log('server listening on 4000')
+  console.log('server listening on 7000')
 });
