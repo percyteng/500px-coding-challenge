@@ -57,7 +57,7 @@ export default class HomePage extends Component{
   }
   componentDidMount(){
     var _this = this
-    setTimeout(()=>this.setState({showImages: true}),600)
+    setTimeout(()=>this.setState({showImages: true}),1000)
     window.onscroll = function(ev) {
       if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
         _this.getMoreImage()
@@ -191,10 +191,10 @@ export default class HomePage extends Component{
         this.state.imageList.map((image, i)=>(
             <div onClick = {this.showModal.bind(this, image, i)} onMouseLeave= {this.onMouseLeave.bind(this)} onMouseOver= {this.onMouseOver.bind(this,i)} key={i} className='animated zoomIn'
               style = {{
-                width:'32%',
+                width:'300px',
                 cursor: 'pointer',
                 position:'relative',
-                height:window.innerWidth*0.3*0.8,
+                height:300*0.8 + 'px',
                 marginTop:window.innerWidth*.005,
                 marginLeft: '.7%',
                 borderRadius: '2%',
@@ -211,7 +211,7 @@ export default class HomePage extends Component{
                   position:'relative',
                   opacity: this.state.display[i]
                 }}>
-                <p style={{color: '#fff', marginLeft: '10px', paddingTop:'10px',fontFamily: 'Avenir', fontSize: 13}}>{image.name}</p>
+                <p style={{color: '#fff', position:'absolute', top:5, left: 10,fontFamily: 'Avenir', fontSize: 13}}>{image.name}</p>
                 <p style={{color: '#fff', position:'absolute', bottom:10, right: 10, fontFamily: 'Avenir', fontSize: 13}}>- {image.user.fullname}</p>
               </div>
             </div>
@@ -224,7 +224,7 @@ export default class HomePage extends Component{
     const Styles = {
       titleStyle:{
         fontFamily: "Avenir",
-        fontSize: '30px',
+        fontSize: '2.5vw',
         fontWeight: 300,
         marginLeft: 20,
       },
@@ -232,6 +232,7 @@ export default class HomePage extends Component{
         marginLeft: 'auto',
         marginRight: 'auto',
         width:'80%',
+        textAlign: 'center',
         backgroundColor: '#f9f9f9',
         height: '500px',
       },
@@ -271,17 +272,17 @@ export default class HomePage extends Component{
       <div>
         <div style={Styles.titleDiv}>
           <h1 className='animated slideInDown' style = {Styles.titleStyle}> 500px Coding Challenge </h1>
-          <a className="animated tada" target='blank' style={{position:'absolute', right:20, bottom:10, color: '#0B0080', textDecoration: 'none', fontFamily:'Avenir', fontStyle:'italic', }} href="http://www.percyteng.me"> - Percy Teng</a>
+          <a className="animated pulse infinite" target='blank' style={{position:'absolute', fontSize:'1em',right:20, bottom:10, color: '#0B0080', textDecoration: 'none', fontFamily:'Avenir', fontStyle:'italic', }} href="http://www.percyteng.me"> - Percy Teng</a>
           <div style={{display:'flex', alignItems:'center', width: '30%', position:'absolute', left:20, top:0}}>
             <FontAwesome
-              className ="animated bounce infinite"
+              className ="animated pulse infinite"
               name='heart'
               size = '2x'
               onClick={this.giveSupport}
               style={{cursor:'pointer', color: '#fc4b4b', }}/>
-            <p className="animated fadeIn" style={{fontFamily:'Avenir', marginLeft:'5px', fontSize: '12px'}}>click to support this website</p>
+            <p className="animated fadeIn" style={{fontFamily:'Avenir', marginLeft:'5px', fontSize: '0.7em'}}>click to support this website</p>
           </div>
-          <p className="animated tada" style={{fontFamily:'Avenir', marginLeft:'5px', fontSize: '15px', position:'absolute', left:30, bottom:10}}>Have received {this.state.supports.toString()} supports!</p>
+          <p className="animated tada" style={{fontFamily:'Avenir', marginLeft:'5px', fontSize: '1.2vw', position:'absolute', left:30, bottom:10}}>Have received {this.state.supports.toString()} supports!</p>
         </div>
         <div style = {Styles.wrapper}>
           <div style={Styles.contentDiv}>

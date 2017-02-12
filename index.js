@@ -2,7 +2,7 @@ const webpack = require('webpack')
 const webpackDevMiddleware = require('webpack-dev-middleware')
 const webpackConfig = require('./webpack.config.js')
 var mongoose = require('mongoose')
-var Support = require('./supportModel');
+var Support = require('./support.model');
 
 mongoose.connect(process.env.MONGODB);
 
