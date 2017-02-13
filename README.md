@@ -6,9 +6,9 @@ Note:
 This repository has two contributors and they are both my accounts. I think I accidently made a commit in my other github account, sorry about that!
 
 # Installation
-`git clone https://github.com/percyteng/500px-coding-challenge.git`
-`npm install`ddf sd fdfsfs
-`npm start`
+1. `git clone https://github.com/percyteng/500px-coding-challenge.git`
+2. `npm install`
+3. `npm start`
 
 # Features:
 I have completed all the required features plus some additional ones
