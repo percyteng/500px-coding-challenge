@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from 'react-dom'
-import App from './homePage'
+import App from './containers/homePage'
 
 render(
     <App/>
