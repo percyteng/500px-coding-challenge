@@ -12,11 +12,11 @@ mongoose.connect(process.env.MONGODB);
 app.use(express.static(__dirname + '/public'))
 app.use(webpackDevMiddleware(webpack(webpackConfig)))
 
-app.set('port', process.env.PORT || 7000);
+app.set('port', process.env.PORT || 8000);
 app.set('host', process.env.HOST || 'localhost');
 
 app.listen(app.get('port'), function(){
-  console.log('server listening on 7000')
+  console.log('server listening on 8000')
 });
 app.get('/',function(req, res){
     res.send('welcome')
