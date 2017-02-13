@@ -279,8 +279,9 @@ export default class HomePage extends Component{
         <div id = "titleDiv" >
           <FontAwesome
             name='500px'
+	    className="animated rotateInDownLeft"
             size='2x'
-            style={{cursor:'pointer'}}
+            style={{cursor:'pointer', marginBottom:'10px'}}
             onClick={()=>window.open("http://500px.com")}/>
           <h1 className='animated slideInDown titleStyle'> 500px Coding Challenge </h1>
           <a className="animated pulse infinite linkToPortfolio" target='blank' href="http://www.percyteng.me"> - Percy Teng</a>
