@@ -5,12 +5,7 @@ It is a fun challenge and I really enjoyed it!
 Access the demo at http://percyteng.me:8000
 
 Note:
-This repository has two contributors and they are both my accounts. I think I accidently made a commit in my other github account, sorry about that!
-
-# Installation
-1. `git clone https://github.com/percyteng/500px-coding-challenge.git`
-2. `npm install`
-3. `npm start`
+This repository has two contributors and they are both my accounts. I think I accidently made a commit in my other github account when it was public, sorry about that!
 
 # Features:
 I have completed all the required features plus some additional ones
@@ -56,6 +51,13 @@ I included most of my styles in a seperate css file. I also implemented some in-
 
 # Infinite scroll.
 Between pagination and infinite scroll, I decided to go with infinite scroll just because it looks more modern and it is more effortless for users to use the app. I implemented this by calling 500px api and pushing the next page into the array of currently displayed images and it looks awesome.
+
+
+# Installation
+1. `git clone https://github.com/percyteng/500px-coding-challenge.git`
+2. `npm install`
+3. `npm start`
+After the installation, it might not work because I have my mongodb credentials stored in environment variables.
 
 # My information
 1. Name: Percy Teng
