@@ -40,7 +40,6 @@ export default class HomePage extends Component{
   //this function will be called when users scroll to the bottom and it will get more images through 500px api
   getMoreImage(){
     var _this = this
-    console.log(currentPage)
 
     _500px.api('/photos', { feature: 'popular', image_size: 5, page: currentPage }, function (response) {
       if (!response.success) {
