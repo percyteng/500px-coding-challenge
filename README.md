@@ -27,7 +27,11 @@ There are a lot of existing react libraries that would make this app incredibly 
 
 # Structures:
 The ./index.js file in the root directory creates a node.js web server then direct to ./public/index.html
+
 ./src/index.js is the starting file which does nothing but points to the main component ./src/homePage.js
+
+./src/fullScreenImage.js contains the code for the full screen sized images when users click on individual image on the photo grid.
+
 ./public/styles.css is the style file
 
 # Design Mindset:
