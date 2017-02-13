@@ -143,7 +143,7 @@ export default class HomePage extends Component{
   }
   //an api call to database for the amount of supports this website has
   getSupport(){
-    return fetch('http://localhost:7000/api/getSupport', {
+    return fetch('http://52.40.151.220:7000/api/getSupport', {
      method: 'GET',
      headers: {
        'Accept': 'application/json',
