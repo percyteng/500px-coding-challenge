@@ -257,15 +257,15 @@ export default class HomePage extends Component{
        <div id ='imageSection'>
          <FontAwesome
            name='arrow-circle-left'
-           size = '3x'
            onClick={this.lastImage}
            className = 'arrows'
+           size = {window.innerWidth > 768 ? '3x' : '2x'}
            />
          <div id='imageContainer' style={{backgroundImage: 'url('+this.state.selectedImage.image_url+')',}}></div>
          <FontAwesome
            name='arrow-circle-right'
-           size='3x'
            className = 'arrows'
+           size = {window.innerWidth > 768 ? '3x' : '2x'}
            onClick={this.nextImage}
            />
        </div>
