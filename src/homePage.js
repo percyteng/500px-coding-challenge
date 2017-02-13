@@ -143,14 +143,16 @@ export default class HomePage extends Component{
   }
   //an api call to database for the amount of supports this website has
   getSupport(){
-    return fetch('http://52.40.151.220:7000/api/getSupport', {
+    return fetch('http://52.40.151.220:8000/api/getSupport', {
      method: 'GET',
+     mode:'no-cors',
      headers: {
        'Accept': 'application/json',
        'Content-Type': 'application/json',
      },
    })
    .then((response) => {
+	console.log(response)
      if (response.status != 200){
          return
        }
@@ -169,7 +171,7 @@ export default class HomePage extends Component{
   }
   //an api call to increment the amount of support by one by calling server side
   giveSupport(){
-    return fetch('http://localhost:7000/api/makeSupport', {
+    return fetch('http://52.40.151.220:8000/api/makeSupport', {
          method: 'GET',
          headers: {
            'Accept': 'application/json',

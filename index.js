@@ -6,9 +6,11 @@ var Support = require('./support.model');
 var path = require('path');
 var express = require('express')
 var app = express();
-
+var cors = require('cors');
 mongoose.connect(process.env.MONGODB);
 
+app.use(cors());
+app.options('*', cors());
 app.use(express.static(__dirname + '/public'))
 app.use(webpackDevMiddleware(webpack(webpackConfig)))
 
