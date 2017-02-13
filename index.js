@@ -3,13 +3,11 @@ const webpackDevMiddleware = require('webpack-dev-middleware')
 const webpackConfig = require('./webpack.config.js')
 var mongoose = require('mongoose')
 var Support = require('./support.model');
-
-mongoose.connect(process.env.MONGODB);
-
 var path = require('path');
-
 var express = require('express')
 var app = express();
+
+mongoose.connect(process.env.MONGODB);
 
 app.use(express.static(__dirname + '/public'))
 app.use(webpackDevMiddleware(webpack(webpackConfig)))
@@ -21,8 +19,9 @@ app.listen(app.get('port'), function(){
   console.log('server listening on 7000')
 });
 app.get('/',function(req, res){
-    res.send('haha')
+    res.send('welcome')
 })
+//get the amount of supports from database
 app.get('/api/getSupport', function(req, res){
   Support.findOne({supportID:1}, function(err, support){
     if (err){
@@ -36,6 +35,7 @@ app.get('/api/getSupport', function(req, res){
     }
   })
 })
+//add one more support to the database
 app.get('/api/makeSupport', function(req, res){
   Support.findOne({supportID: 1}, function(err, support){
     if (err){

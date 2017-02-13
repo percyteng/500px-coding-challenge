@@ -1,0 +1,227 @@
+
+p, h1, a{
+  margin:0;
+  font-family: 'Avenir';
+}
+
+.userPic{
+  border-radius: 50%;
+  margin-left: 20px;
+  margin-top: 20px;
+  display: inline-block;
+}
+
+hr{
+  border: none;
+  height: 1px;
+  background-color: #e8e8e8;
+  color: #e8e8e8;
+  margin-top: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.eachImage{
+  display: inline-block;
+  width:300px;
+  cursor:pointer;
+  height:240px;
+  position:relative;
+  margin-left: .7%;
+  border-radius: 2%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.hoverCaption{
+  padding-left: 5px;
+  height: 20%;
+  background-color:rgba(0, 0, 0, .5);
+  position:relative;
+}
+.hoverText{
+  color: #fff;
+  position:absolute;
+  font-size: 13px;
+}
+#titleDiv{
+  margin-top: 20px;
+  margin-bottom: 1px;
+  position:relative;
+  text-align:center;
+  box-shadow: 0px 1px 1px #e8e8e8;
+  padding-bottom:5px;
+}
+.titleStyle{
+  font-size: 35px;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+
+.linkToPortfolio{
+  position:absolute;
+  font-size:1em;
+  right:20px;
+  bottom:10px;
+  color: #0B0080;
+  text-decoration: none;
+  font-style:'italic';
+}
+#supportDiv{
+  display:flex;
+  align-items:center;
+  width: 30%;
+  position:absolute;
+  left:20px;
+  top:0px;
+}
+.heartIcon{
+  cursor:pointer;
+  color: #fc4b4b;
+}
+.supportText{
+  margin-left:5px;
+  font-size: 10px;
+}
+.supportReport{
+  margin-left:5px;
+  font-size: 1.2vw;
+  position:absolute;
+  left:30px;
+  bottom:10px;
+}
+#wrapper{
+  background-color:#f9f9f9;
+  width: 100%;
+}
+#contentDiv{
+  margin-left: auto;
+  margin-right: auto;
+  width:80%;
+  text-align: center;
+  background-color: #f9f9f9;
+  height: 500px;
+}
+#largeImageDiv{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: rgba(0,0,0,0.8);
+  z-index: 10;
+}
+#captionSection{
+  background-color:#fff;
+  position:relative;
+  height:100%;
+  overflow-y:scroll;
+  float:right;
+  width:25%;
+  margin-left:20px;
+}
+#imageName{
+  margin-left:20px;
+  margin-top:20px;
+  font-weight:100;
+  font-size:1.2em;
+  font-style:'italic';
+}
+#dismissModal{
+   cursor: pointer;
+   margin-right:20px;
+   margin-top:20px;
+   color: #da9843;
+   float:right;
+}
+.arrows{
+  cursor:pointer;
+  color: #ccc;
+}
+#userName{
+  margin-left:10px;
+  margin-top:10px;
+  vertical-align: 80%;
+  font-weight:100;
+  display:inline-block;
+  font-size:1em;
+}
+#likes{
+  margin-left:20px;
+  margin-top:20px;
+  color: #fc4b4b;
+  display:inline-block;
+}
+#upVotes{
+  margin-left:5px;
+  display:inline-block;
+  margin-top:20px;
+  font-weight:100;
+  font-size:1em;
+}
+#description{
+  margin-left:20px;
+  color: #606060;
+  margin-top:20px;
+  font-weight:100;
+  font-size:1em;
+}
+#createdTime{
+  margin-right:20px;
+  margin-top:20px;
+  float:right;
+  font-weight:100;
+  font-size:0.8em;
+  color: #a5a5a5;
+}
+#imageSection{
+  height:90%;
+  margin-top:20px;
+  max-width:60%;
+  margin-left:2%;
+  display: flex;
+  align-items:center;
+  justify-content:'center';
+}
+#imageContainer{
+  margin:3%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height:100%;
+  width:80%;
+  background-position: center;
+}
+@media screen and (max-width: 765px) {
+  #largeImageDiv{
+    display: flex;
+  }
+  #captionSection:{
+    float:none;
+  }
+}
+@media screen and (max-width: 765px) {
+  .titleStyle{
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
+  .linkToPortfolio{
+    font-size: 12px;
+  }
+  .supportReport{
+    font-size: 10px;
+    left:10px;
+  }
+  .supportText{
+    display: none;
+  }
+  #imageSection{
+    max-width: 100%;
+    height:50%;
+    margin-top: 0px;
+  }
+  #captionSection{
+    float:none;
+    margin-left: 0px;
+    width:100%;
+    height:50%;
+  }
+}
