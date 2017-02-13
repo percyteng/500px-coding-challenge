@@ -2,6 +2,8 @@
 
 It is a fun challenge and I really enjoyed it!
 
+Access the demo at http://percyteng.me:7000
+
 Note:
 This repository has two contributors and they are both my accounts. I think I accidently made a commit in my other github account, sorry about that!
 
@@ -56,9 +58,8 @@ I included most of my styles in a seperate css file. I also implemented some in-
 Between pagination and infinite scroll, I decided to go with infinite scroll just because it looks more modern and it is more effortless for users to use the app. I implemented this by calling 500px api and pushing the next page into the array of currently displayed images and it looks awesome.
 
 # My information
-You can access this web app at http://percyteng.me:7000
-Name: Percy Teng
-Github: https://github.com/percyteng
-Portfolio: http://percyteng.me
-Linkedin: https://ca.linkedin.com/in/percy-teng
+1. Name: Percy Teng
+2. Github: https://github.com/percyteng
+3. Portfolio: http://percyteng.me
+4. Linkedin: https://ca.linkedin.com/in/percy-teng
 
