@@ -1,7 +1,7 @@
 # 500px Coding Challenge
 
 It is a fun challenge and I really enjoyed it!
-
+This app should be both web and mobile friendly!
 Access the demo at http://percyteng.me:8000
 
 Note:
