@@ -40,6 +40,8 @@ export default class HomePage extends Component{
   //this function will be called when users scroll to the bottom and it will get more images through 500px api
   getMoreImage(){
     var _this = this
+    console.log(currentPage)
+
     _500px.api('/photos', { feature: 'popular', image_size: 5, page: currentPage }, function (response) {
       if (!response.success) {
           alert('Unable to fetch images');
@@ -47,13 +49,12 @@ export default class HomePage extends Component{
       else{
         var newList = _this.state.imageList.slice()
         newList.push.apply(newList, response.data.photos)
-        console.log(newList.length)
         _this.setState({imageList:newList}, ()=>{
           var tmp = new Array(_this.state.imageList.length)
           tmp.fill(0)
           _this.setState({display:tmp})
         })
-
+        currentPage += 1
       }
     })
   }
