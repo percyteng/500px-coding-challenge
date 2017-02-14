@@ -10,7 +10,9 @@ p, h1, a{
   margin-top: 20px;
   display: inline-block;
 }
-
+.hidden{
+  opacity: 0;
+}
 hr{
   border: none;
   height: 1px;

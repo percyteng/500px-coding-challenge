@@ -1,6 +1,4 @@
-const webpack = require('webpack')
-const webpackDevMiddleware = require('webpack-dev-middleware')
-const webpackConfig = require('./webpack.config.js')
+
 var mongoose = require('mongoose')
 var Support = require('./support.model');
 var path = require('path');
@@ -8,11 +6,19 @@ var express = require('express')
 var app = express();
 var cors = require('cors');
 mongoose.connect(process.env.MONGODB);
+if (process.env.NODE_ENV !== 'production'){
+  const webpack = require('webpack')
+  const webpackDevMiddleware = require('webpack-dev-middleware')
+  const webpackConfig = require('./webpack.config.js')
+  const compiler = webpack(webpackConfig);
+ 	app.use(webpackDevMiddleware(compiler, {
+ 		noInfo: true, publicPath: webpackConfig.output.path
+ 	}));
+}
 
 app.use(cors());
 app.options('*', cors());
 app.use(express.static(__dirname + '/public'))
-app.use(webpackDevMiddleware(webpack(webpackConfig)))
 
 app.set('port', process.env.PORT || 8000);
 app.set('host', process.env.HOST || 'localhost');

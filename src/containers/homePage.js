@@ -24,8 +24,6 @@ export default class HomePage extends Component{
         }
       },
       supports:100,
-      display:[],
-      test: 0,
       showImages: false,
       showLargeImageModal: 'none',
       spinDismiss: false,
@@ -34,11 +32,11 @@ export default class HomePage extends Component{
     this._animate = new ReactStateAnimation(this)
     this.giveSupport = this.giveSupport.bind(this)
     this.nextImage = this.nextImage.bind(this)
-    this.lastImage = this.lastImage.bind(this)
+    this.previousImage = this.previousImage.bind(this)
   }
 
   //this function will be called when users scroll to the bottom and it will get more images through 500px api
-  getMoreImage(){
+  getImage(){
     var _this = this
 
     _500px.api('/photos', { feature: 'popular', image_size: 5, page: currentPage }, function (response) {
@@ -48,11 +46,7 @@ export default class HomePage extends Component{
       else{
         var newList = _this.state.imageList.slice()
         newList.push.apply(newList, response.data.photos)
-        _this.setState({imageList:newList}, ()=>{
-          var tmp = new Array(_this.state.imageList.length)
-          tmp.fill(0)
-          _this.setState({display:tmp})
-        })
+        _this.setState({imageList:newList})
         currentPage += 1
       }
     })
@@ -62,7 +56,7 @@ export default class HomePage extends Component{
     setTimeout(()=>this.setState({showImages: true}),1000)
     window.onscroll = function(ev) {
       if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
-        _this.getMoreImage()
+        _this.getImage()
       }
     };
   }
@@ -74,22 +68,7 @@ export default class HomePage extends Component{
     _500px.init({
       sdk_key: '5eec9aac38ad6a4660f3b8f30edac08e110c7405'
     });
-    _500px.api('/photos', { feature: 'popular', image_size: 5, page: currentPage }, function (response) {
-      if (!response.success) {
-          alert('Unable to fetch images');
-      }
-      else{
-        currentPage += 1
-        console.log(response.data.photos)
-        _this.setState({selectedImage:response.data.photos[0]})
-        _this.setState({imageList:response.data.photos}, ()=>{
-          var tmp = new Array(_this.state.imageList.length)
-          tmp.fill(0)
-          _this.setState({display:tmp})
-        })
-
-      }
-    })
+    this.getImage()
   }
   //this function shows the image modal with animation
   showModal(image, i){
@@ -107,16 +86,11 @@ export default class HomePage extends Component{
   }
   //gets called when the mouse gets over a image
   onMouseOver(i){
-    var tmp = new Array(this.state.display.length)
-    tmp.fill(0)
-    tmp[i] = 1
-    this.setState({display: tmp})
+    document.getElementById(i.toString()).classList.remove("hidden")
   }
   //gets called when the mouse gets away a image
-  onMouseLeave(){
-    var tmp = new Array(this.state.display.length)
-    tmp.fill(0)
-    this.setState({display: tmp})
+  onMouseLeave(i){
+    document.getElementById(i.toString()).classList.add("hidden")
   }
   //used to switch to the next image in the list, if it reaches the edge, it will call api for more images
   nextImage(){
@@ -127,11 +101,11 @@ export default class HomePage extends Component{
       this.setState({selectedImage: newImage})
     }
     else{
-      this.getMoreImage()
+      this.getImage()
     }
   }
   //used to switch to the previous imagei n the list
-  lastImage(){
+  previousImage(){
     var index = this.state.selectedImage.key
     if (index > 0){
       var newImage = Object.assign({},this.state.imageList[index-1])
@@ -200,14 +174,12 @@ export default class HomePage extends Component{
       return(
         this.state.imageList.map((image, i)=>(
             <div className = 'eachImage animated zoomIn' onClick = {this.showModal.bind(this, image, i)}
-            onMouseLeave= {this.onMouseLeave.bind(this)} onMouseOver= {this.onMouseOver.bind(this,i)} key={i}
+            onMouseLeave= {this.onMouseLeave.bind(this, i)} onMouseOver= {this.onMouseOver.bind(this,i)} key={i}
               style = {{
                 marginTop:window.innerWidth*.005,
                 backgroundImage: 'url('+image.image_url+')',
               }}>
-                <div className = 'hoverCaption' style={{
-                  opacity: this.state.display[i]
-                }}>
+                <div id = {i.toString()} className = 'hoverCaption hidden'>
                 <p className='hoverText' style={{top:5, left: 10}}>{image.name}</p>
                 <p className='hoverText' style={{bottom:10, right: 10}}>- {image.user.fullname}</p>
               </div>
@@ -225,7 +197,7 @@ export default class HomePage extends Component{
         <div id = "titleDiv" >
           <FontAwesome
             name='500px'
-	    className="animated rotateInDownLeft"
+	          className="animated rotateInDownLeft"
             size='2x'
             style={{cursor:'pointer', marginBottom:'10px'}}
             onClick={()=>window.open("http://500px.com")}/>
@@ -252,7 +224,7 @@ export default class HomePage extends Component{
         </div>
 
         <FullImage largeImageOpacity= {this.state.largeImageOpacity} showLargeImageModal={this.state.showLargeImageModal}
-        selectedImage = {this.state.selectedImage} nextImage={this.nextImage} lastImage={this.lastImage} dismissModal={this.dismissModal.bind(this)}
+        selectedImage = {this.state.selectedImage} nextImage={this.nextImage} previousImage={this.previousImage} dismissModal={this.dismissModal.bind(this)}
         />
 
       </div>

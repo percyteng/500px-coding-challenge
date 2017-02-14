@@ -54,7 +54,7 @@ export default class HomePage extends Component{
         <div id ='imageSection'>
           <FontAwesome
             name='arrow-circle-left'
-            onClick={this.props.lastImage}
+            onClick={this.props.previousImage}
             className = 'arrows'
             size = {window.innerWidth > 768 ? '3x' : '2x'}
             />
