@@ -11,7 +11,12 @@ p, h1, a{
   display: inline-block;
 }
 .hidden{
+  transition: opacity 600ms;
   opacity: 0;
+}
+.oppacityTransition{
+  transition: opacity 600ms;
+  opacity:1;
 }
 hr{
   border: none;

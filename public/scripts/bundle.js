@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "06184a9a25b2dae6b703"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "883641d5225e688eed8c"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -22204,10 +22204,7 @@
 	    key: 'onMouseOver',
 	    value: function onMouseOver(i) {
 	      document.getElementById(i.toString()).classList.remove("hidden");
-	      // var tmp = new Array(this.state.display.length)
-	      // tmp.fill(0)
-	      // tmp[i] = 1
-	      // this.setState({display: tmp})
+	      document.getElementById(i.toString()).classList.add("oppacityTransition");
 	    }
 	    //gets called when the mouse gets away a image
 	
@@ -22215,6 +22212,7 @@
 	    key: 'onMouseLeave',
 	    value: function onMouseLeave(i) {
 	      document.getElementById(i.toString()).classList.add("hidden");
+	      document.getElementById(i.toString()).classList.remove("oppacityTransition");
 	    }
 	    //used to switch to the next image in the list, if it reaches the edge, it will call api for more images
 	

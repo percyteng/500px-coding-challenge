@@ -87,10 +87,12 @@ export default class HomePage extends Component{
   //gets called when the mouse gets over a image
   onMouseOver(i){
     document.getElementById(i.toString()).classList.remove("hidden")
+    document.getElementById(i.toString()).classList.add("oppacityTransition")
   }
   //gets called when the mouse gets away a image
   onMouseLeave(i){
     document.getElementById(i.toString()).classList.add("hidden")
+    document.getElementById(i.toString()).classList.remove("oppacityTransition")
   }
   //used to switch to the next image in the list, if it reaches the edge, it will call api for more images
   nextImage(){
