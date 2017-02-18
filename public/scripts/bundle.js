@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "47a82827aeab4598231c"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "327db1156f8f2173d49e"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -22148,6 +22148,21 @@
 	    value: function componentDidMount() {
 	      var _this3 = this;
 	
+	      var _this = this;
+	      document.onkeydown = function (evt) {
+	        evt = evt || window.event;
+	        var isEscape = false;
+	        if ("key" in evt) {
+	          isEscape = evt.key == "Escape" || evt.key == "Esc";
+	        } else {
+	          isEscape = evt.keyCode == 27;
+	        }
+	        if (isEscape) {
+	          if (_this.state.showLargeImageModal === 'inline') {
+	            _this.dismissModal();
+	          }
+	        }
+	      };
 	      var _this = this;
 	      setTimeout(function () {
 	        return _this3.setState({ showImages: true });

@@ -53,6 +53,21 @@ export default class HomePage extends Component{
   }
   componentDidMount(){
     var _this = this
+    document.onkeydown = function(evt) {
+      evt = evt || window.event;
+      var isEscape = false;
+      if ("key" in evt) {
+          isEscape = (evt.key == "Escape" || evt.key == "Esc");
+      } else {
+          isEscape = (evt.keyCode == 27);
+      }
+      if (isEscape) {
+        if (_this.state.showLargeImageModal === 'inline'){
+          _this.dismissModal()
+        }
+      }
+    };
+    var _this = this
     setTimeout(()=>this.setState({showImages: true}),1000)
     window.onscroll = function(ev) {
       if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
