@@ -2,7 +2,7 @@
 
 It is a fun challenge and I really enjoyed it!
 This app should be both web and mobile friendly!
-Access the demo at http://percyteng.me:8000
+Access the demo at http://500px.percyteng.me
 
 Note:
 This repository has two contributors and they are both my accounts. I think I accidently made a commit in my other github account when it was public, sorry about that!
